@@ -18,9 +18,17 @@ class MailThread(models.AbstractModel):
 
         res = super(MailThread, self)._notify_prepare_template_context(message, msg_vals, model_description=False, mail_auto_delete=True)
         # import pdb; pdb.set_trace()
-        if self.lang == 'he_IL':
-            res.message.body = "<div dir='rtl'>" + res.message.body + "</div>"
-        import pdb; pdb.set_trace()
+        # print(res["lang"])
+        if res["lang"] == 'he_IL':
+            res["message"].body = "<div dir='rtl'>" + res["message"].body + "</div>"
+        # # import pdb; pdb.set_trace()
+        # print(res)
+        # print("***************message :")
+        # print(res["message"])
+        # # temp = res["message"]
+        # print("!!!!!!!!!!!body")
+        # print(res["message"].body)
+        # # print(res["message"]["mail"])
 
         return res
 
