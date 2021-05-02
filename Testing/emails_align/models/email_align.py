@@ -79,17 +79,20 @@ def _notify_prepare_template_context(self, message, msg_vals, model_description=
     res = super(MailThread, self)._notify_prepare_template_context(message, msg_vals, model_description=False, mail_auto_delete=True)
 
     if lang == 'he_IL':
-        message.body = "<div dir='rtl'>" + message.body + "</div>"
-    return {
-        'message': message,
-        'signature': signature,
-        'website_url': website_url,
-        'company': company,
-        'model_description': model_description,
-        'record': self,
-        'record_name': record_name,
-        'tracking_values': tracking,
-        'is_discussion': is_discussion,
-        'subtype': message.subtype_id,
-        'lang': lang,
-    }
+        res.message.body = "<div dir='rtl'>" + res.message.body + "</div>"
+    
+    return res
+    
+    # return {
+    #     'message': message,
+    #     'signature': signature,
+    #     'website_url': website_url,
+    #     'company': company,
+    #     'model_description': model_description,
+    #     'record': self,
+    #     'record_name': record_name,
+    #     'tracking_values': tracking,
+    #     'is_discussion': is_discussion,
+    #     'subtype': message.subtype_id,
+    #     'lang': lang,
+    # }
