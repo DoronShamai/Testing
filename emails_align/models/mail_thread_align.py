@@ -1,10 +1,44 @@
 # -*- coding: utf-8 -*-
-from odoo import fields, models, api
+# from odoo import _,fields, models, api
+from odoo import _, api, exceptions, fields, models
+
+import email
+import email.policy
+from email.message import EmailMessage
+from email import message_from_string, policy
+from odoo.addons.mail.models.mail_thread import MailThread as MailThread
 
 
-class EmailAlign(models.Model):
-    # _inherit = "stock.picking"
-    _name = 'email.align'
+class MailThread(models.AbstractModel):
+    _inherit = "mail.thread"
+
+    @api.model
+    def _notify_prepare_template_context(self, message, msg_vals, model_description=False, mail_auto_delete=True):
+        # import pdb; pdb.set_trace()
+
+        res = super(MailThread, self)._notify_prepare_template_context(message, msg_vals, model_description=False, mail_auto_delete=True)
+        # import pdb; pdb.set_trace()
+        if self.lang == 'he_IL':
+            res.message.body = "<div dir='rtl'>" + res.message.body + "</div>"
+        import pdb; pdb.set_trace()
+
+        return res
+
+    # return {
+    #     'message': message,
+    #     'signature': signature,
+    #     'website_url': website_url,
+    #     'company': company,
+    #     'model_description': model_description,
+    #     'record': self,
+    #     'record_name': record_name,
+    #     'tracking_values': tracking,
+    #     'is_discussion': is_discussion,
+    #     'subtype': message.subtype_id,
+    #     'lang': lang,
+    # }
+
+
 
 # @api.model
 #     def _notify_prepare_template_context(self, message, msg_vals, model_description=False, mail_auto_delete=True):
@@ -71,28 +105,3 @@ class EmailAlign(models.Model):
 #             'subtype': message.subtype_id,
 #             'lang': lang,
 #         }
-
-
-@api.model
-def _notify_prepare_template_context(self, message, msg_vals, model_description=False, mail_auto_delete=True):
-
-    res = super(MailThread, self)._notify_prepare_template_context(message, msg_vals, model_description=False, mail_auto_delete=True)
-
-    if lang == 'he_IL':
-        res.message.body = "<div dir='rtl'>" + res.message.body + "</div>"
-
-    return res
-
-    # return {
-    #     'message': message,
-    #     'signature': signature,
-    #     'website_url': website_url,
-    #     'company': company,
-    #     'model_description': model_description,
-    #     'record': self,
-    #     'record_name': record_name,
-    #     'tracking_values': tracking,
-    #     'is_discussion': is_discussion,
-    #     'subtype': message.subtype_id,
-    #     'lang': lang,
-    # }
