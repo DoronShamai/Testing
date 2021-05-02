@@ -1,0 +1,8 @@
+*.py[cod]
+__pycache__/
+.project
+.ropeproject
+.pydevproject
+.settings
+*.zip
+.vscode/
