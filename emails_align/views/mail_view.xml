@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="message_notification_email_align" inherit_id="mail.message_notification_email">
+        <xpath expr="//div[@t-raw='message.body']" position="replace">
+            <div t-if="lang == 'he_IL'" dir='rtl'>
+            <div t-raw="message.body"/>
+            </div>
+             <div t-else="">
+            <div t-raw="message.body"/>
+            </div>
+        </xpath>
+    </template>
+</odoo>
