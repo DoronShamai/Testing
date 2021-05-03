@@ -5,7 +5,7 @@
 
     <template id="message_notification_email_align" inherit_id="mail.message_notification_email">
         <xpath expr="//div[@t-raw='message.body']" position="replace">
-            <div t-if="res['lang'] == 'he_IL'" dir='rtl'>
+            <div t-if="lang == 'he_IL'" dir='rtl'>
             <div t-raw="message.body"/>
             </div>
         </xpath>
