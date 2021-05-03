@@ -13,7 +13,7 @@
     ],
     'data': [
 
-       
+       'views/mail_view.xml'
     ],
 
     'installable': True,
