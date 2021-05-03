@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-<!--message_notification_email-->
-
 
     <template id="message_notification_email_align" inherit_id="mail.message_notification_email">
         <xpath expr="//div[@t-raw='message.body']" position="replace">
