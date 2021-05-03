@@ -6,7 +6,7 @@
             <div t-if="lang == 'he_IL'" dir='rtl'>
             <div t-raw="message.body"/>
             </div>
-             <div t-else="">
+            <div t-else="">
             <div t-raw="message.body"/>
             </div>
         </xpath>
