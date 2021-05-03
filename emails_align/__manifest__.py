@@ -13,10 +13,6 @@
     ],
     'data': [
 
-    #    'views/stock_picking_batch_views.xml',
-    #    'security/ir.model.access.csv',
-    #    'report/report_delivery_slot_notes.xml',
-
        
     ],
 
